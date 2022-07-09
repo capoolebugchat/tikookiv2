@@ -103,8 +103,8 @@ async def get_all_recipes():
     # find all recipes in DB and sort them by rating
     
     db = mg_client["TikookDBv2"]
-    RcpCollection = db.recipes
-    rcps = list(RcpCollection.find({},{"_id":0}).sort({"ratings": DESCENDING}))
+    RcpCollection = db.Recipes
+    rcps = list(RcpCollection.find({},{"_id":0}))
     return {"recipes":rcps}
     
 @app.post("/insert-one-recipe",tags=["insert-one-recipe"],status_code=status.HTTP_200_OK)
