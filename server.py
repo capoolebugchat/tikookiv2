@@ -27,12 +27,28 @@ class Recipe(BaseModel):
     est_cook_mins: int
     n0_likes: int
     n0_servings: int
-    UserID: str
-    rating: float
+    user_id: str
+    ratings: float
     n0_ratings: int
     img_urls: List[str] = ["Blank"]
     steps: Dict[str, Step]
     ingredients: List[Dict[str, Ingre]]
+
+class User(BaseModel):
+    user_id: str
+    name: str
+    pfp_url: str
+    n0_follows: int
+    n0_followers: int
+    n0_recipes: int
+
+class TikiNgonItem(BaseModel):
+    name: str
+    img_url: str
+    ratings: float
+    n0_ratings: int
+    in_stock: int
+
 
 class RecipeQuery(BaseModel):
     title: str = "unknown"
@@ -40,6 +56,10 @@ class RecipeQuery(BaseModel):
 
 
 tags_metadata = [
+    {
+        "name": "get-all-recipes",
+        "description": "get all recipes sorted by rating"
+    },
     {
         "name": "health-check",
         "description": "check health"
@@ -55,6 +75,10 @@ tags_metadata = [
     {
         "name":"get-recipe-by-category",
         "description": "query recipes using category, return list of 10 matches"
+    },
+    {
+        "name":"get-tikiNgon-by-ingredient-name",
+        "description": "return data for a specified ingredient"
     }
     # {
     #     "name":"insert-UGC-recipe",
@@ -69,6 +93,17 @@ mg_client = MongoClient(host="104.154.184.230", port=27017)
 async def check_status():
     return {"sup":"ite den"}
 
+@app.get("/get-all-recipes",tags=['get_all_recipes'],status_code=status.HTTP_200_OK)
+async def get_all_recipes():
+    #TODOS: 
+    # connect to MGDB 
+    # find all recipes in DB and sort them by rating
+    
+    db = mg_client["TikookDBv2"]
+    RcpCollection = db.recipes
+    
+
+
 @app.post("/insert-one-recipe",tags=["insert-one-recipe"],status_code=status.HTTP_200_OK)
 async def insert_one(recipe_data: Recipe):
     
@@ -77,7 +112,7 @@ async def insert_one(recipe_data: Recipe):
     # parse and insert 1 recipe into MGDB 
     
     db = mg_client["TikookDBv2"]
-    RcpCollection = db.Recipes
+    RcpCollection = db.recipes
     insRes = RcpCollection.insert_one(recipe_data.dict())
 
     return {"InsertionResult":str(insRes.acknowledged)}
@@ -90,7 +125,7 @@ async def get_recipe_by_title(recipe_query: RecipeQuery):
     # closing code: client.close()
 
     db = mg_client["TikookDBv2"]
-    RcpCollection = db.Recipes
+    RcpCollection = db.recipes
 
     if recipe_query.title != "unknown":
         cursors = RcpCollection.find({"title":recipe_query.title}, {"_id":0})
@@ -100,14 +135,29 @@ async def get_recipe_by_title(recipe_query: RecipeQuery):
 
 @app.post("/get-recipe-by-category",tags=["get-recipe-by-category"],status_code=status.HTTP_200_OK)
 async def get_recipe_by_cate(recipe_query: RecipeQuery):
-    
     #TODOS: 
     # connect to MGDB
     db = mg_client["TikookDBv2"]
-    RcpCollection = db.Recipes
+    RcpCollection = db.recipes
 
     if recipe_query.category != "unknown":
-        cursors = RcpCollection.find({"category":recipe_query.title}, {"_id":0})
+        cursors = RcpCollection.find({"category":recipe_query.category}, {"_id":0})
         return {"Matching recipes": list(cursors)}
     else: 
         return {"Message": "Unknown recipe name"}
+
+@app.get("/get-tikiNgon-by-ingredient-name", tags=["get-tikiNgon-by-ingredient-name"], status_code=status.HTTP_200_OK)
+async def get_tikiNgon_item_by_ingredient_name(ingredient_name: str=""):
+    #TODOS:
+    # connect to MGDB
+    # return tikiNgon item data corresponding to the ingredient name
+    db = mg_client["TikookDBv2"]
+    TikiNgonCollection = db.tikingon_item
+
+    if ingredient_name != "":
+        cursors = TikiNgonCollection.find({"name":ingredient_name}, {"_id":0})
+        return {"Matching TikiNgon items": list(cursors)}
+    else:
+        return {"Message": "Couldn't find a tikiNgon item with the provided ingredient name"}
+
+
