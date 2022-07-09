@@ -22,7 +22,7 @@ class Ingre(BaseModel):
 
 class Recipe(BaseModel):
     title: str
-    reviews: Dict[str, Review]
+    reviews: List[Dict[str, Review]]
     category: str
     est_cook_mins: int
     n0_likes: int
