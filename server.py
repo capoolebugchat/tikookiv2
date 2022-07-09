@@ -3,7 +3,9 @@ from fastapi import FastAPI, Response, status
 from pydantic import BaseModel
 from typing import List, Dict
 from time import time
-from pymongo import MongoClient
+from pymongo import MongoClient, ASCENDING, DESCENDING
+
+
 
 class Review(BaseModel):
     username: str
@@ -101,9 +103,9 @@ async def get_all_recipes():
     
     db = mg_client["TikookDBv2"]
     RcpCollection = db.recipes
+    rcps = list(RcpCollection.find({}).sort({"ratings": DESCENDING}))
+    return {"recipes":rcps}
     
-
-
 @app.post("/insert-one-recipe",tags=["insert-one-recipe"],status_code=status.HTTP_200_OK)
 async def insert_one_recipe(recipe_data: Recipe):
     
