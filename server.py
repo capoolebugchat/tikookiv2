@@ -22,7 +22,7 @@ class Ingre(BaseModel):
 
 class Recipe(BaseModel):
     title: str
-    reviews: Dict[str, Review]
+    reviews: List[Dict[str, Review]]
     category: str
     est_cook_mins: int
     n0_likes: int
@@ -105,7 +105,7 @@ async def get_all_recipes():
 
 
 @app.post("/insert-one-recipe",tags=["insert-one-recipe"],status_code=status.HTTP_200_OK)
-async def insert_one(recipe_data: Recipe):
+async def insert_one_recipe(recipe_data: Recipe):
     
     #TODOS: 
     # connect to MGDB 
