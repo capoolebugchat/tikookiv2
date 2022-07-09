@@ -35,7 +35,7 @@ class Recipe(BaseModel):
     ingredients: List[Dict[str, Ingre]]
 
 class RecipeQuery(BaseModel):
-    title: str
+    title: str = "unknown"
     category: str = "unknown"
 
 
@@ -85,8 +85,9 @@ async def get_recipe_by_title(recipe_query: RecipeQuery):
     # connect to MGDB 
     # closing code: client.close()
 
-    # db = mg_client["TikookDBv2"]
-    # RcpCollection = db.Recipes
-    # insRes = RcpCollection.find(recipe_query.dict())
+    db = mg_client["TikookDBv2"]
+    RcpCollection = db.Recipes
 
-    return {"Message":"Not implemented"}
+    if recipe_query.title != "unknown":
+        cursors = RcpCollection.find({"title":recipe_query.title}, {"_id":0})
+    return {"matchingm recipes": list(cursors)}
