@@ -1,11 +1,12 @@
+from ctypes import Union
 from unicodedata import category
 from fastapi import FastAPI, Response, status
 from pydantic import BaseModel
-from typing import List, Dict
+from typing import Any, List, Dict, Union
 from time import time
+
 from pymongo import MongoClient, ASCENDING, DESCENDING
-
-
+import uvicorn
 
 class Review(BaseModel):
     username: str
@@ -14,7 +15,7 @@ class Review(BaseModel):
     ranking: int
 
 class Step(BaseModel):
-    img_urls: List[str]
+    img_urls: List[Any]
     content: str
 
 class Ingre(BaseModel):
@@ -24,7 +25,7 @@ class Ingre(BaseModel):
 
 class Recipe(BaseModel):
     title: str
-    reviews: List[Dict[str, Review]]
+    reviews: List[Union[Review, None]]
     category: str
     est_cook_mins: int
     n0_likes: int
@@ -32,9 +33,9 @@ class Recipe(BaseModel):
     user_id: str
     ratings: float
     n0_ratings: int
-    img_urls: List[str] = ["Blank"]
-    steps: Dict[str, Step]
-    ingredients: List[Dict[str, Ingre]]
+    img_urls: List[str]
+    steps: List[Union[Step,None]]
+    ingredients: List[Union[Ingre,None]]
 
 class User(BaseModel):
     user_id: str
@@ -103,7 +104,7 @@ async def get_all_recipes():
     
     db = mg_client["TikookDBv2"]
     RcpCollection = db.recipes
-    rcps = list(RcpCollection.find({}).sort({"ratings": DESCENDING}))
+    rcps = list(RcpCollection.find({},{"_id":0}).sort({"ratings": DESCENDING}))
     return {"recipes":rcps}
     
 @app.post("/insert-one-recipe",tags=["insert-one-recipe"],status_code=status.HTTP_200_OK)
@@ -116,7 +117,7 @@ async def insert_one_recipe(recipe_data: Recipe):
     db = mg_client["TikookDBv2"]
     RcpCollection = db.recipes
     insRes = RcpCollection.insert_one(recipe_data.dict())
-
+    print(recipe_data)
     return {"InsertionResult":str(insRes.acknowledged)}
 
 @app.post("/get-recipe-by-title",tags=["get-recipe-by-title"],status_code=status.HTTP_200_OK)
