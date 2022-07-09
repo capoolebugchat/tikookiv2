@@ -3,7 +3,6 @@ from fastapi import FastAPI, Response, status
 from pydantic import BaseModel
 from typing import List, Dict
 from time import time
-import uvicorn
 from pymongo import MongoClient
 
 class Review(BaseModel):
@@ -53,10 +52,10 @@ tags_metadata = [
         "name":"get-recipe-by-title",
         "description": "query recipes using name, return list of 10 matches"
     },
-    {
-        "name":"insert-UGC-recipe",
-        "description": "insert user's generated recipe into db"
-    }
+    # {
+    #     "name":"insert-UGC-recipe",
+    #     "description": "insert user's generated recipe into db"
+    # }
 ]
 
 app = FastAPI(openapi_tags = tags_metadata)
@@ -86,11 +85,8 @@ async def get_recipe_by_title(recipe_query: RecipeQuery):
     # connect to MGDB 
     # closing code: client.close()
 
-    db = mg_client["TikookDBv2"]
-    RcpCollection = db.Recipes
-    insRes = RcpCollection.find(recipe_query.dict())
+    # db = mg_client["TikookDBv2"]
+    # RcpCollection = db.Recipes
+    # insRes = RcpCollection.find(recipe_query.dict())
 
-    return {"InsertionResult":str(insRes.acknowledged)}
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8802)
+    return {"Message":"Not implemented"}
