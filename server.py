@@ -70,7 +70,7 @@ async def check_status():
     return {"sup":"ite den"}
 
 @app.post("/insert-one-recipe",tags=["insert-one-recipe"],status_code=status.HTTP_200_OK)
-async def insert_one(recipe_data: Recipe):
+async def insert_one_recipe(recipe_data: Recipe):
     
     #TODOS: 
     # connect to MGDB 
