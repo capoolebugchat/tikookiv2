@@ -52,6 +52,10 @@ tags_metadata = [
         "name":"get-recipe-by-title",
         "description": "query recipes using name, return list of 10 matches"
     },
+    {
+        "name":"get-recipe-by-category",
+        "description": "query recipes using category, return list of 10 matches"
+    }
     # {
     #     "name":"insert-UGC-recipe",
     #     "description": "insert user's generated recipe into db"
@@ -90,4 +94,20 @@ async def get_recipe_by_title(recipe_query: RecipeQuery):
 
     if recipe_query.title != "unknown":
         cursors = RcpCollection.find({"title":recipe_query.title}, {"_id":0})
-    return {"matchingm recipes": list(cursors)}
+        return {"matching recipes": list(cursors)}
+    else: 
+        return {"Message": "Unknown recipe name"}
+
+@app.post("/get-recipe-by-category",tags=["get-recipe-by-category"],status_code=status.HTTP_200_OK)
+async def get_recipe_by_cate(recipe_query: RecipeQuery):
+    
+    #TODOS: 
+    # connect to MGDB
+    db = mg_client["TikookDBv2"]
+    RcpCollection = db.Recipes
+
+    if recipe_query.category != "unknown":
+        cursors = RcpCollection.find({"category":recipe_query.title}, {"_id":0})
+        return {"Matching recipes": list(cursors)}
+    else: 
+        return {"Message": "Unknown recipe name"}
