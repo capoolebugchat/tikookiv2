@@ -1,9 +1,11 @@
+from ctypes import Union
 from unicodedata import category
 from fastapi import FastAPI, Response, status
 from pydantic import BaseModel
-from typing import List, Dict
+from typing import Any, List, Dict, Union
 from time import time
 from pymongo import MongoClient
+import uvicorn
 
 class Review(BaseModel):
     username: str
@@ -12,7 +14,7 @@ class Review(BaseModel):
     ranking: int
 
 class Step(BaseModel):
-    img_urls: List[str]
+    img_urls: List[Any]
     content: str
 
 class Ingre(BaseModel):
@@ -22,17 +24,17 @@ class Ingre(BaseModel):
 
 class Recipe(BaseModel):
     title: str
-    reviews: List[Dict[str, Review]]
+    reviews: List[Union[Review, None]]
     category: str
     est_cook_mins: int
     n0_likes: int
     n0_servings: int
-    UserID: str
+    user_id: str
     rating: float
     n0_ratings: int
-    img_urls: List[str] = ["Blank"]
-    steps: Dict[str, Step]
-    ingredients: List[Dict[str, Ingre]]
+    img_urls: List[str]
+    steps: List[Union[Step,None]]
+    ingredients: List[Union[Ingre,None]]
 
 class RecipeQuery(BaseModel):
     title: str = "unknown"
@@ -79,7 +81,7 @@ async def insert_one_recipe(recipe_data: Recipe):
     db = mg_client["TikookDBv2"]
     RcpCollection = db.Recipes
     insRes = RcpCollection.insert_one(recipe_data.dict())
-
+    print(recipe_data)
     return {"InsertionResult":str(insRes.acknowledged)}
 
 @app.post("/get-recipe-by-title",tags=["get-recipe-by-title"],status_code=status.HTTP_200_OK)
