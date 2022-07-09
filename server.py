@@ -82,7 +82,16 @@ tags_metadata = [
     {
         "name":"get-tikiNgon-by-ingredient-name",
         "description": "return data for a specified ingredient"
+    },
+    {
+        "name":"list-all-categories",
+        "description":"return list of all categories"
+    },
+    {
+        "name":"get-recipe-by-category",
+        "description":"return recipes belonging to a category"
     }
+
     # {
     #     "name":"insert-UGC-recipe",
     #     "description": "insert user's generated recipe into db"
@@ -104,7 +113,8 @@ async def get_all_recipes():
     
     db = mg_client["TikookDBv2"]
     RcpCollection = db.Recipes
-    rcps = list(RcpCollection.find({},{"_id":0}))
+    rcps = RcpCollection.find({})
+    rcps_and_ID = []
     return {"recipes":rcps}
     
 @app.post("/insert-one-recipe",tags=["insert-one-recipe"],status_code=status.HTTP_200_OK)
@@ -163,4 +173,18 @@ async def get_tikiNgon_item_by_ingredient_name(ingredient_name: str=""):
     else:
         return {"Message": "Couldn't find a tikiNgon item with the provided ingredient name"}
 
-
+@app.get("/get-all-categories",tags=["list-all-categories"],status_code=status.HTTP_200_OK)
+async def get_all_categories():
+    #TODOS: 
+    # connect to MGDB 
+    # find all categories and return 'em
+    
+    db = mg_client["TikookDBv2"]
+    RcpCollection = db.Recipes
+    rcps = list(RcpCollection.find({},{"_id":0}))
+    categories=[]
+    for rcp in rcps:
+        if rcp["category"] not in categories:
+            categories.append(rcp["category"])
+    print(categories)
+    return {"categories":categories}
