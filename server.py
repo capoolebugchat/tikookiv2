@@ -105,7 +105,7 @@ mg_client = MongoClient(host="104.154.184.230", port=27017)
 async def check_status():
     return {"sup":"ite den"}
 
-@app.get("/get-all-recipes",tags=['get_all_recipes'],status_code=status.HTTP_200_OK)
+@app.get("/get-all-recipes",tags=['get-all-recipes'],status_code=status.HTTP_200_OK)
 async def get_all_recipes():
     #TODOS: 
     # connect to MGDB 
@@ -113,7 +113,7 @@ async def get_all_recipes():
     
     db = mg_client["TikookDBv2"]
     RcpCollection = db.Recipes
-    rcps = RcpCollection.find({})
+    rcps = list(RcpCollection.find({}))
     rcps_and_ID = []
     return {"recipes":rcps}
     
@@ -183,8 +183,8 @@ async def get_all_categories():
     RcpCollection = db.Recipes
     rcps = list(RcpCollection.find({},{"_id":0}))
     categories=[]
-    for rcp in rcps:
-        if rcp["category"] not in categories:
-            categories.append(rcp["category"])
-    print(categories)
+    # for rcp in rcps:
+    #     if rcp.category not in categories:
+    #         categories.append(rcp.category)
+    # print(categories)
     return {"categories":categories}
