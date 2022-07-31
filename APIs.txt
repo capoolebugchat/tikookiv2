@@ -1,0 +1,381 @@
+BASE_URL = "https://tikooki-be-v2-roijbwmiyq-de.a.run.app";
+
+//Get a list all recipes
+https://tikooki-be-v2-roijbwmiyq-de.a.run.app/get-all-recipes
+Example returned result:
+{
+    "recipes": [
+        {
+            "_id": "62d12784bdb2b6d0b804b099",
+            "title": "Cá chép kho riềng, nghệ",
+            "reviews": [],
+            "category": "món kho",
+            "est_cook_mins": 100,
+            "n0_likes": 50,
+            "n0_servings": 2,
+            "user_id": "",
+            "rating": 4.2,
+            "n0_ratings": 33,
+            "img_urls": [
+                "https://cdn.cet.edu.vn/wp-content/uploads/2018/10/ca-chep-kho-rieng.jpg"
+            ],
+            "steps": [
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 1: Sơ chế các nguyên liệu\\nCá chép khi mua về, bạn đem làm sạch, loại bỏ ruột, mang rồi rửa sạch bằng nước muối loãng để khử bớt mùi tanh. Sau đó, rửa cá thêm lần nữa qua nước ấm khoảng 4 – 5 lần để thịt cá săn chắc hơn. Rồi bạn cắt cá thành từng khúc dày khoảng 2,5cm, để ráo nước.\\nThịt ba chỉ khi mua bạn không nên chọn quá nhiều thịt nạc hay quá nhiều mỡ. Khi mua về, bạn rửa sạch, để ráo nước, cắt miếng vừa ăn rồi đem ướp với: Nước mắm, muối, đường, nước hàng rồi trộn đều cho thịt ngấm đều gia vị trong khoảng 15 – 20 phút.\\nRiềng bạn đem cạo vỏ, rửa sạch và cắt thành từng lát mỏng, đập dập. Hoặc bạn có thể xay nhỏ hoặc giã nát riềng để dùng ướp với cá để hương vị đậm đà hơn.\\nSả đem rửa sạch, băm nhuyễn.\\nGừng bóc vỏ, giã nhuyễn."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 2: Ướp cá kho\\nCá chép bạn đem ướp với các loại gia vị bao gồm: 1 muỗng cà phê nước mắm, 1 muỗng cà phê hạt nêm, 1 muỗng cà phê đường, 1 muỗng cà phê bột ngọt, 1 muỗng cà phê dầu hào, gừng, sả băm nhuyễn cùng 2 quả ớt. Rồi dùng đũa trộn đều lên, ướp cá trong khoảng 15 - 20 phút."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 3: Kho cá\\nBạn chuẩn bị nồi đất hoặc nồi có đáy dày rồi xếp lần lượt theo thứ tự: Riềng, gừng, cá, thịt. Cuối cùng, bạn xếp nấm hương lên trên cùng. Tiếp theo, bạn cho thêm nước sôi để nguội vào nồi cá rồi cho lên bếp đun nhỏ lửa từ 10 – 15 phút để cá ngấm, chín kỹ và không bị cháy. Sau đó, khi cá sôi, bạn cho thêm ít nước trà xanh vào nồi kho cùng."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 4: Hoàn thành\\nBạn kho cá thêm khoảng 40 phút, đến khi nồi cá chỉ còn ít nước thì bạn tắt bếp. Trong quá trình kho cá, bạn không nên dùng đũa đảo cá để cá không bị vỡ. Cuối cùng, bạn cho cá ra đĩa và thưởng thức nóng cùng cơm trắng."
+                }
+            ],
+            "ingredients": [
+                {
+                    "category": "cá chép",
+                    "name": "thịt ba chỉ",
+                    "Ngon_url": "",
+                    "ammount": 500,
+                    "unit": "g"
+                }
+            ]
+        },
+        {
+            "_id": "62d12784bdb2b6d0b804b09a",
+            "title": "Thịt kho cháy cạnh",
+            "reviews": [],
+            "category": "món kho",
+            "est_cook_mins": 15,
+            "n0_likes": 60,
+            "n0_servings": 2,
+            "user_id": "",
+            "rating": 3.2,
+            "n0_ratings": 23,
+            "img_urls": [
+                "https://cdn.cet.edu.vn/wp-content/uploads/2019/08/cach-lam-thit-kho-chay-canh.jpg"
+            ],
+            "steps": [
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Sơ chế nguyên liệu - Thịt ba chỉ mua về đem rửa sạch với nước muối loãng trước, sau đó rửa lại với nước rồi để ráo. Tiếp tục thái thịt thành những miếng vừa ăn, nên thái miếng hình chữ nhật và thái hơi mỏng để thịt dễ ngấm vị và khi rang cháy sẽ tiết bớt mỡ ra, giúp thịt dai ngon, ít ngán.\\nSau khi thái thịt xong, bạn cho vào nước sôi chần khoảng 30 giây rồi vớt ra giúp cho mặt thịt se lại, khi rang thịt sẽ thơm ngon hơn và không bị vẩy bọt. Bạn cũng có thể chần nguyên miếng thịt rồi thái nhỏ. Tuy nhiên, thái nhỏ rồi chần sẽ giúp miếng thịt se mặt lại, khi rang nhanh cháy cạnh và không bị mất chất ngọt bên trong.\\nHành tím bóc vỏ, đập dập, băm nhỏ.\\nSả bóc lớp vỏ già, cắt gốc, rửa sạch, cắt khúc rồi chẻ thành các sợi dài, nhỏ.\\nỚt tươi rửa sạch, thái lát nhỏ, có thể bỏ hạt hoặc không.\\nHành lá nhặt rửa sạch, cắt khúc."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 2: Ướp thịt\\nSau khi chần thịt và để ráo, bạn cho thịt vào tô hoặc nồi, nêm thêm: 1 thìa canh nước mắm ngon, 1 thìa cà phê bột ngọt, 1 thìa cà phê nước hàng. Trộn đều thịt với gia vị rồi ướp khoảng 20 - 30 phút."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 3: Rang thịt\\nBạn bắc chảo lòng sâu lên bếp, cho thịt vào chảo rồi bật lửa vừa, đảo thịt đều tay cho đến khi thịt tiết ra mỡ và xém vàng 2 mặt thì bạn cho sả vào đảo cùng để thịt thấm mùi thơm của sả. Đảo thêm vài phút cho đến khi sả dậy mùi thơm và hơi vàng. Nếu thịt tiết ra nhiều mỡ, bạn có thể nghiêng chảo lại rồi dùng muỗng múc bớt ra ngoài, để lại một chút cho thịt không bị khô.\\nTiếp tục cho hành tím băm vào đảo cùng thịt cho thơm rồi nêm nếm nước mắm, thêm chút đường rồi đảo đều để thịt thấm gia vị. Hạ lửa nhỏ, đảo thêm vài phút để thịt không bị cháy và cho ớt thái nhỏ, hành lá vào đảo đều rồi tắt bếp."
+                }
+            ],
+            "ingredients": [
+                {
+                    "category": "thịt lợn",
+                    "name": "thịt ba chỉ",
+                    "Ngon_url": "",
+                    "ammount": 500,
+                    "unit": "g"
+                }
+            ]
+        },
+        {
+            "_id": "62d12784bdb2b6d0b804b09b",
+            "title": "Vịt kho gừng và sả ớt",
+            "reviews": [],
+            "category": "món kho",
+            "est_cook_mins": 40,
+            "n0_likes": 69,
+            "n0_servings": 2,
+            "user_id": "",
+            "rating": 4.5,
+            "n0_ratings": 20,
+            "img_urls": [
+                "https://cdn.cet.edu.vn/wp-content/uploads/2018/10/vit-kho-sa-ot.jpg"
+            ],
+            "steps": [
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 1: Sơ chế nguyên liệu\\nDùng dao sắc lọc lấy phần thịt nạc và bỏ xương vịt đi. Gừng cắt khoanh mỏng nhỏ hoặc giã nhỏ. Sau đó, đem vịt đi ướp với gừng và rượu để làm hết mùi hôi của thịt vịt. Bạn để yên thịt vịt trong 2,3 phút thì rửa sạch lại với nước sạch.\\nHành, tỏi đem bóc vỏ và băm nhuyễn. Ớt thái nhỏ, củ sả bóc bỏ phần vỏ bên ngoài sau đó giã nhuyễn, chia làm hai phần.\\nƯớp thịt vịt với các gia vị: Nước mắm, đường, hạt tiêu, ½ phần sả băm, hạt nêm, nước hàng, ớt, để nghỉ 15 phút."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 2: Chế biến\\nBắc chảo lên bếp, cho dầu ăn, cho sả và tỏi vào phi thơm.\\nTrút thịt vịt vào chảo chiên qua. Khi thấy thịt vịt có màu vàng đều, bạn trút sang nồi, cho nước lọc hoặc nước dừa xâm xấp mặt thịt vịt, đun với ngọn lửa lớn.\\nKhi thịt vịt sôi khoảng 10 – 15 phút, vặn nhỏ lửa để thịt vịt vừa chín mềm lại thấm gia vị. Tiếp tục canh nhỏ lửa khoảng 20 – 25 phút nữa đến khi nồi cạn gần hết chỉ còn một ít và đặc sánh thì tắt bếp là bạn hoàn thành cách làm món vịt kho sả ớt rồi nhé."
+                }
+            ],
+            "ingredients": [
+                {
+                    "category": "thịt vịt",
+                    "name": "vịt",
+                    "Ngon_url": "",
+                    "ammount": 500,
+                    "unit": "g"
+                }
+            ]
+        },
+        {
+            "_id": "62d12784bdb2b6d0b804b09c",
+            "title": "Gà rang muối giòn",
+            "reviews": [],
+            "category": "món rang",
+            "est_cook_mins": 40,
+            "n0_likes": 20,
+            "n0_servings": 2,
+            "user_id": "",
+            "rating": 3.5,
+            "n0_ratings": 42,
+            "img_urls": [
+                "https://cdn.cet.edu.vn/wp-content/uploads/2022/01/ga-rang-muoi.jpg"
+            ],
+            "steps": [
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 1: Sơ chế các nguyên liệu\\nThịt gà mua rửa với muối và chanh (giấm) để khử mùi tanh rồi rửa sạch với nước để ráo. Bạn cắt thịt gà thành từng miếng vuông, có kích thước khoảng 2cm. Sau đó, bạn ướp gà với các gia vị hạt nêm, bột ngọt, tiêu xay, nước mắm, tỏi băm nhuyễn và lòng đỏ trứng gà. Dùng đũa trộn đều và để khoảng 25-30 phút để thịt gà thấm đều vị.\\nBạn vo nếp và đậu xanh qua 2 lần với nước sạch, sau đó ngâm khoảng 20 phút rồi vớt ra để ráo.\\nSả rửa sạch, cắt khúc dài, đập dập rồi xé thành từng sợi nhỏ. Gừng gọt vỏ, cắt sợi dài. Còn lá chanh sau khi rửa sạch thì cắt sợi nhuyễn."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 2: Rang muối\\nĐặt chảo lên bếp với lửa vừa, cho nếp và đậu xanh vào rang, đảo đều tay đến khi vàng thơm thì tắt bếp và để riêng vào 1 chén nhỏ. Tiếp tục sử dụng chảo đó để rang phần muối hạt, rang tầm 3 phút thì bạn tắt bếp. Cho đậu xanh, nếp, muối hạt và tiêu vào cối để xay nhuyễn."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 3: Làm gà rang muối\\nBắc chảo lên bếp và cho vào khoảng 1 chén dầu ăn, sau đó đun sôi. Khi dầu ăn sôi, bạn cho gừng và lá chanh vào chiên cho thơm. Dùng rây vớt ra rồi cho lên dĩa đã lót sẵn giấy ăn hoặc giấy thấm dầu.\\nTiếp tục cho sả xé sợi vào chiên, dùng đũa đảo nhẹ tay để tránh văng dầu. Chiên trong khoảng 3 – 4 phút cho sả chuyển sang màu vàng rơm là được.\\nĐun sôi chảo dầu, lăn từng miếng gà qua phần bột năng khô rồi cho lần lượt từng miếng gà vào chảo chiên cho chín vàng.\\nKhi gà đã chín vàng thì vớt gà ra và cho vào 1 cái tô nhỏ, cho hỗn hợp muối đã xay nhuyễn vào tô, đậy nắp và lắc đều. Bạn nên cho muối vào khi gà vừa vớt ra và còn nóng, làm như vậy thì các gia vị mới thấm vào thịt gà."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 4: Thành phẩm\\nBạn lót một lớp sả chiên lên dĩa rồi đặt gà lên trên, rắc thêm muối và gừng, lá chanh là có thể thưởng thức. Da gà giòn thơm nhưng thịt vẫn giữ được vị mềm ngọt đặc trưng. Vị mặn của muối và vị béo bùi của đậu xanh và nếp cùng với lá chanh và sả chiên giòn khiến cho món ăn này hấp dẫn hơn bao giờ hết. Bạn có thể ăn kèm với 1 chén muối ớt chanh hay các loại nước chấm yêu thích khác đều rất tuyệt vời."
+                }
+            ],
+            "ingredients": [
+                {
+                    "category": "thịt gà",
+                    "name": "Thịt gà",
+                    "Ngon_url": "",
+                    "ammount": 500,
+                    "unit": "g"
+                }
+            ]
+        },
+        {
+            "_id": "62d12784bdb2b6d0b804b09d",
+            "title": "Cơm chiên trứng",
+            "reviews": [],
+            "category": "món chiên",
+            "est_cook_mins": 20,
+            "n0_likes": 40,
+            "n0_servings": 2,
+            "user_id": "",
+            "rating": 4.5,
+            "n0_ratings": 42,
+            "img_urls": [
+                "https://cdn.cet.edu.vn/wp-content/uploads/2018/12/com-chien-trung.jpg"
+            ],
+            "steps": [
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 1: Sơ chế nguyên liệu\\nĐập trứng cho vào chén và đánh tan.\\nHành tây bóc vỏ, thái nhỏ.\\nHành lá rửa sạch, cắt nhỏ."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 2: Chiên cơm\\nBạn cho dầu ăn vào chảo, rồi cho hành tây vào phi thơm. Tiếp theo, cho cơm vào đảo đều và gạt cơm qua một bên. Tiếp đến, bạn cho trứng vào rồi đảo đều trứng với cho trứng bám đều cơm. Cho vào 1 muỗng nước mắm và chiên đến khi hạt cơm săn lại thì tắt bếp rồi cho hành lá vào là được."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 3: Làm gà rang muối\\nBắc chảo lên bếp và cho vào khoảng 1 chén dầu ăn, sau đó đun sôi. Khi dầu ăn sôi, bạn cho gừng và lá chanh vào chiên cho thơm. Dùng rây vớt ra rồi cho lên dĩa đã lót sẵn giấy ăn hoặc giấy thấm dầu.\\nTiếp tục cho sả xé sợi vào chiên, dùng đũa đảo nhẹ tay để tránh văng dầu. Chiên trong khoảng 3 – 4 phút cho sả chuyển sang màu vàng rơm là được.\\nĐun sôi chảo dầu, lăn từng miếng gà qua phần bột năng khô rồi cho lần lượt từng miếng gà vào chảo chiên cho chín vàng.\\nKhi gà đã chín vàng thì vớt gà ra và cho vào 1 cái tô nhỏ, cho hỗn hợp muối đã xay nhuyễn vào tô, đậy nắp và lắc đều. Bạn nên cho muối vào khi gà vừa vớt ra và còn nóng, làm như vậy thì các gia vị mới thấm vào thịt gà."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 4: Thành phẩm\\nBạn lót một lớp sả chiên lên dĩa rồi đặt gà lên trên, rắc thêm muối và gừng, lá chanh là có thể thưởng thức. Da gà giòn thơm nhưng thịt vẫn giữ được vị mềm ngọt đặc trưng. Vị mặn của muối và vị béo bùi của đậu xanh và nếp cùng với lá chanh và sả chiên giòn khiến cho món ăn này hấp dẫn hơn bao giờ hết. Bạn có thể ăn kèm với 1 chén muối ớt chanh hay các loại nước chấm yêu thích khác đều rất tuyệt vời."
+                }
+            ],
+            "ingredients": [
+                {
+                    "category": "trứng",
+                    "name": "Trứng gà",
+                    "Ngon_url": "",
+                    "ammount": 4,
+                    "unit": "quả"
+                }
+            ]
+        },
+        {
+            "_id": "62d12784bdb2b6d0b804b09e",
+            "title": "Cơm chiên gà xối mỡ",
+            "reviews": [],
+            "category": "món chiên",
+            "est_cook_mins": 70,
+            "n0_likes": 70,
+            "n0_servings": 2,
+            "user_id": "",
+            "rating": 4.5,
+            "n0_ratings": 33,
+            "img_urls": [
+                "https://cdn.cet.edu.vn/wp-content/uploads/2020/04/cach-lam-com-chien-ga-xoi-mo.jpg"
+            ],
+            "steps": [
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 1: Sơ chế nguyên liệu\\nGà rửa sạch, chặt miếng vừa ăn. Ướp gà cùng với tỏi, hạt nêm, một chút đường trong khoảng 30 phút."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 2: Luộc gà\\nBắc một nồi nước, trong đó cho đầu hành, gừng đập dập, thêm một chút muối rồi thả gà đã ướp vào luộc chín. Sau khi gà chín, vớt gà ra để khô thật ráo nước."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 3: Rán gà\\nGà phải để thật khô thì khi rán để lớp da gà mới có thể giòn rụm. Đổ dầu vào chảo, để dầu thật nóng rồi thả gà vào rán cho tới khi lớp da giòn và ngả màu vàng cánh gián."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 4: Chiên cơm\\nNước luộc gà lọc qua một tấm vải, dùng nước đó để nấu cơm. Trong lúc đó, phi thơm tỏi cùng với hạt điều (nếu muốn cơm màu đỏ) hoặc bột nghệ (nếu muốn cơm có màu vàng), phi xong bỏ tỏi đi chỉ giữ lại phần mỡ chiên. Sau đó khi cơm chín, trộn đều cơm với phần mỡ ấy. Tiếp theo, bạn bắc chảo lên bếp, để lửa vừa và đảo đều tay phẩn cơm ấy cho đến khi hạt cơm săn lại và tắt bếp."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 5: Pha nước mắm ăn kèm\\nPha nước mắm ăn kèm bằng cách dùng 1 muỗng nước cốt chanh, 4 muỗng đường, 5 muỗng nước mắm, 6 muỗng nước lọc, 1 muỗng tỏi ớt băm nhuyễn.\\nỞ cách làm nước chấm gà xối mỡ này, bạn cho nước cốt chanh, đường, nước mắm và nước lọc vào chén.\\nTiếp theo, hòa cho tan đều hỗ hợp trên cho đến khi nước mắm có độ sánh nhất định. Sau đó, bạn cho tỏi ớt đã băm nhuyễn vào là hoàn thành nước mắm để ăn kèm cùng cơm gà xối mỡ.\\nĐể có thể thưởng thức, bạn chỉ cần để cơm ra đĩa rồi cho gà lên và cho thêm các loại rau củ để ăn cùng như cà chua bi, rau xà lách. Tùy theo sở thích, bạn có thể thay đổi các loại thức ăn dùng kèm để phù hợp với khẩu vị riêng của mình."
+                }
+            ],
+            "ingredients": [
+                {
+                    "category": "trứng",
+                    "name": "Trứng gà",
+                    "Ngon_url": "",
+                    "ammount": 4,
+                    "unit": "quả"
+                }
+            ]
+        }
+    ]
+}
+
+
+//Get one recipe using id
+https://tikooki-be-v2-roijbwmiyq-de.a.run.app/get-recipe-by-id?id=
+Example: Get the recipe with id=62d12784bdb2b6d0b804b09e:
+https://tikooki-be-v2-roijbwmiyq-de.a.run.app/get-recipe-by-id?id=62d12784bdb2b6d0b804b09e
+Example returned results:
+{
+    "recipes": [
+        {
+            "_id": "62d12784bdb2b6d0b804b09e",
+            "title": "Cơm chiên gà xối mỡ",
+            "reviews": [],
+            "category": "món chiên",
+            "est_cook_mins": 70,
+            "n0_likes": 70,
+            "n0_servings": 2,
+            "user_id": "",
+            "rating": 4.5,
+            "n0_ratings": 33,
+            "img_urls": [
+                "https://cdn.cet.edu.vn/wp-content/uploads/2020/04/cach-lam-com-chien-ga-xoi-mo.jpg"
+            ],
+            "steps": [
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 1: Sơ chế nguyên liệu\\nGà rửa sạch, chặt miếng vừa ăn. Ướp gà cùng với tỏi, hạt nêm, một chút đường trong khoảng 30 phút."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 2: Luộc gà\\nBắc một nồi nước, trong đó cho đầu hành, gừng đập dập, thêm một chút muối rồi thả gà đã ướp vào luộc chín. Sau khi gà chín, vớt gà ra để khô thật ráo nước."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 3: Rán gà\\nGà phải để thật khô thì khi rán để lớp da gà mới có thể giòn rụm. Đổ dầu vào chảo, để dầu thật nóng rồi thả gà vào rán cho tới khi lớp da giòn và ngả màu vàng cánh gián."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 4: Chiên cơm\\nNước luộc gà lọc qua một tấm vải, dùng nước đó để nấu cơm. Trong lúc đó, phi thơm tỏi cùng với hạt điều (nếu muốn cơm màu đỏ) hoặc bột nghệ (nếu muốn cơm có màu vàng), phi xong bỏ tỏi đi chỉ giữ lại phần mỡ chiên. Sau đó khi cơm chín, trộn đều cơm với phần mỡ ấy. Tiếp theo, bạn bắc chảo lên bếp, để lửa vừa và đảo đều tay phẩn cơm ấy cho đến khi hạt cơm săn lại và tắt bếp."
+                },
+                {
+                    "img_urls": [
+                        ""
+                    ],
+                    "content": "Bước 5: Pha nước mắm ăn kèm\\nPha nước mắm ăn kèm bằng cách dùng 1 muỗng nước cốt chanh, 4 muỗng đường, 5 muỗng nước mắm, 6 muỗng nước lọc, 1 muỗng tỏi ớt băm nhuyễn.\\nỞ cách làm nước chấm gà xối mỡ này, bạn cho nước cốt chanh, đường, nước mắm và nước lọc vào chén.\\nTiếp theo, hòa cho tan đều hỗ hợp trên cho đến khi nước mắm có độ sánh nhất định. Sau đó, bạn cho tỏi ớt đã băm nhuyễn vào là hoàn thành nước mắm để ăn kèm cùng cơm gà xối mỡ.\\nĐể có thể thưởng thức, bạn chỉ cần để cơm ra đĩa rồi cho gà lên và cho thêm các loại rau củ để ăn cùng như cà chua bi, rau xà lách. Tùy theo sở thích, bạn có thể thay đổi các loại thức ăn dùng kèm để phù hợp với khẩu vị riêng của mình."
+                }
+            ],
+            "ingredients": [
+                {
+                    "category": "trứng",
+                    "name": "Trứng gà",
+                    "Ngon_url": "",
+                    "ammount": 4,
+                    "unit": "quả"
+                }
+            ]
+        }
+    ]
+}
+
+
+//Get one recipe using category
+https://tikooki-be-v2-roijbwmiyq-de.a.run.app/get-recipe-by-id?category=""
+Example: Get the recipes belong to category "món chiên":
+https://tikooki-be-v2-roijbwmiyq-de.a.run.app/get-recipe-by-id?category="món chiên"
+
+//Get a list of all categories
+https://tikooki-be-v2-roijbwmiyq-de.a.run.app/get-all-categories
+Example returned result:
+{
+    "categories": [
+        "món kho",
+        "món rang",
+        "món chiên"
+    ]
+}

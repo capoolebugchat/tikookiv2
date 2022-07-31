@@ -1,11 +1,15 @@
 from ctypes import Union
+import http
 from unicodedata import category
 from fastapi import FastAPI, Response, status
 from pydantic import BaseModel
 from typing import Any, List, Dict, Union
 from time import time
+from bson.json_util import dumps, loads
+from bson.objectid import ObjectId
 
-from pymongo import MongoClient, ASCENDING, DESCENDING
+
+from pymongo import MongoClient, ASCENDING, DESCENDING, errors
 import uvicorn
 
 class Review(BaseModel):
@@ -90,7 +94,11 @@ tags_metadata = [
     {
         "name":"get-recipe-by-category",
         "description":"return recipes belonging to a category"
-    }
+    },
+    {
+        "name":"get-recipe-by-id",
+        "description":"return recipe with given id"
+    },
 
     # {
     #     "name":"insert-UGC-recipe",
@@ -100,6 +108,15 @@ tags_metadata = [
 
 app = FastAPI(openapi_tags = tags_metadata)
 mg_client = MongoClient(host="104.154.184.230", port=27017)
+
+try:
+    mg_client = MongoClient(host="104.154.184.230", port=27017, username="tikook_admin", password="T!k00k", authSource="TikookDB", authMechanism="SCRAM-SHA-256")
+    mg_client.server_info() # force connection on a request as the
+                         # connect=True parameter of MongoClient seems
+                         # to be useless here 
+except errors.ServerSelectionTimeoutError as err:
+    # do whatever you need
+    print(err)
 
 @app.get("/", tags=["check-status"],status_code=status.HTTP_200_OK)
 async def check_status():
@@ -111,12 +128,34 @@ async def get_all_recipes():
     # connect to MGDB 
     # find all recipes in DB and sort them by rating
     
-    db = mg_client["TikookDBv2"]
-    RcpCollection = db.Recipes
-    rcps = list(RcpCollection.find({}))
-    rcps_and_ID = []
-    return {"recipes":rcps}
+    db = mg_client["TikookDB"]
+    RcpCollection = db.recipes
+    rcps_cursor = RcpCollection.find()
+    rcps_data = []
+    for rcp in rcps_cursor:
+        rcp['_id'] = str(rcp['_id'])
+        rcps_data.append(rcp)
+    return {"recipes":rcps_data}
     
+@app.get("/get-recipe-by-id",tags=["get-recipe-by-id"],status_code=status.HTTP_200_OK)
+async def get_recipe_by_id(id: str=""):
+    #TODOS: 
+    # connect to MGDB 
+    # find one recipe in DB corresponding to given id
+    # category="món chiên"
+    db = mg_client["TikookDB"]
+    RcpCollection = db.recipes
+    # rcps = list(RcpCollection.find({},{"_id":0}))
+    obj_id = ObjectId(id)
+    rcp_cursor = RcpCollection.find({"_id": obj_id})
+    rcp_data = []
+    for rcp in rcp_cursor:
+        rcp['_id'] = str(rcp['_id'])
+        rcp_data.append(rcp)
+    # print(rcp_data[0]["category"])
+    # print(category==rcp_data[0]["category"])
+    return {"recipes":rcp_data}
+
 @app.post("/insert-one-recipe",tags=["insert-one-recipe"],status_code=status.HTTP_200_OK)
 async def insert_one_recipe(recipe_data: Recipe):
     
@@ -124,7 +163,7 @@ async def insert_one_recipe(recipe_data: Recipe):
     # connect to MGDB 
     # parse and insert 1 recipe into MGDB 
     
-    db = mg_client["TikookDBv2"]
+    db = mg_client["TikookDB"]
     RcpCollection = db.recipes
     insRes = RcpCollection.insert_one(recipe_data.dict())
     print(recipe_data)
@@ -137,7 +176,7 @@ async def get_recipe_by_title(recipe_query: RecipeQuery):
     # connect to MGDB 
     # closing code: client.close()
 
-    db = mg_client["TikookDBv2"]
+    db = mg_client["TikookDB"]
     RcpCollection = db.recipes
 
     if recipe_query.title != "unknown":
@@ -146,16 +185,21 @@ async def get_recipe_by_title(recipe_query: RecipeQuery):
     else: 
         return {"Message": "Unknown recipe name"}
 
-@app.post("/get-recipe-by-category",tags=["get-recipe-by-category"],status_code=status.HTTP_200_OK)
-async def get_recipe_by_cate(recipe_query: RecipeQuery):
+@app.get("/get-recipe-by-category",tags=["get-recipe-by-category"],status_code=status.HTTP_200_OK)
+async def get_recipe_by_cate(category: str=""):
     #TODOS: 
     # connect to MGDB
-    db = mg_client["TikookDBv2"]
+    db = mg_client["TikookDB"]
     RcpCollection = db.recipes
-
-    if recipe_query.category != "unknown":
-        cursors = RcpCollection.find({"category":recipe_query.category}, {"_id":0})
-        return {"Matching recipes": list(cursors)}
+    if category != "":
+        category=category.replace('"','')
+        print(category)
+        rcp_cursor = RcpCollection.find({"category": category})
+        rcp_data = []
+        for rcp in rcp_cursor:
+            rcp['_id'] = str(rcp['_id'])
+            rcp_data.append(rcp)
+        return {"recipes": rcp_data}
     else: 
         return {"Message": "Unknown recipe name"}
 
@@ -164,7 +208,7 @@ async def get_tikiNgon_item_by_ingredient_name(ingredient_name: str=""):
     #TODOS:
     # connect to MGDB
     # return tikiNgon item data corresponding to the ingredient name
-    db = mg_client["TikookDBv2"]
+    db = mg_client["TikookDB"]
     TikiNgonCollection = db.tikingon_item
 
     if ingredient_name != "":
@@ -179,12 +223,12 @@ async def get_all_categories():
     # connect to MGDB 
     # find all categories and return 'em
     
-    db = mg_client["TikookDBv2"]
-    RcpCollection = db.Recipes
-    rcps = list(RcpCollection.find({},{"_id":0}))
-    categories=[]
-    # for rcp in rcps:
-    #     if rcp.category not in categories:
-    #         categories.append(rcp.category)
-    # print(categories)
+    db = mg_client["TikookDB"]
+    RcpCollection = db.recipes
+    rcps_cursor = RcpCollection.find()
+    categories = []
+    for rcp in rcps_cursor:
+        # rcp['category'] = str(rcp['_id'])
+        if rcp['category'] not in categories:
+            categories.append(rcp['category'])
     return {"categories":categories}
